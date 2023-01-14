@@ -1,26 +1,45 @@
 import { useState, useEffect } from "react";
 
 function Hint_File({ food }) {
+  // Food attributes
   const theBrand = food["food"]["brand"];
   const theLabel = food["food"]["label"];
   const theCategory = food["food"]["category"];
   const theUnits = food["measures"];
   const theNutrients = food["food"]["nutrients"];
 
+  // Options
   const [currentUnit, setCurrentUnit] = useState(food["measures"][0]);
-  const [currentCalories, setCurrentCalories] = useState(
-    currentUnit["weight"] * (theNutrients["ENERC_KCAL"] / 100)
-  );
-  const [currentProtien, setCurrentProtien] = useState(
-    currentUnit["weight"] * (theNutrients["PROCNT"] / 100)
-  );
+  const [currentQuantity, setCurrentQuantity] = useState(1);
+  // Food Macros
+  const [currentCalories, setCurrentCalories] = useState();
+  const [currentProtien, setCurrentProtien] = useState();
+  const [currentCarbs, setCurrentCarbs] = useState();
+  const [currentFat, setCurrentFat] = useState();
+
   useEffect(() => {
-    console.log(theLabel, currentCalories);
-  }, [currentUnit]);
+    setCurrentCalories(
+      currentUnit["weight"] *
+        (theNutrients["ENERC_KCAL"] / 100) *
+        currentQuantity
+    );
+
+    setCurrentProtien(
+      currentUnit["weight"] * (theNutrients["PROCNT"] / 100) * currentQuantity
+    );
+
+    setCurrentCarbs(
+      currentUnit["weight"] * (theNutrients["CHOCDF"] / 100) * currentQuantity
+    );
+    setCurrentFat(
+      currentUnit["weight"] * (theNutrients["FAT"] / 100) * currentQuantity
+    );
+  }, [currentUnit, currentQuantity]);
 
   const chooseUnit = function (e) {
     const newUnit = JSON.parse(e.target.value);
     setCurrentUnit(newUnit);
+    setCurrentQuantity(1);
   };
 
   return (
@@ -39,10 +58,20 @@ function Hint_File({ food }) {
           </select>
         </td>
         <td>
-          <input type="number" defaultValue={1} />
+          <input
+            min="1"
+            type="number"
+            value={currentQuantity}
+            onChange={(e) => setCurrentQuantity(e.target.value)}
+          />
         </td>
-        <td>{Math.round(currentCalories)} cal</td>
-        <td>{Math.round(currentProtien)} g</td>
+        <td>{Math.round(currentCalories * 100) / 100} cal</td>
+        <td>{Math.round(currentProtien * 100) / 100} g</td>
+        <td>{Math.round(currentCarbs * 100) / 100} g</td>
+        <td>{Math.round(currentFat * 100) / 100} g</td>
+        <td>
+          <button>Add</button>
+        </td>
       </tr>
     </>
   );

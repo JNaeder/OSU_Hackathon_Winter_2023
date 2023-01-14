@@ -1,9 +1,8 @@
 import Hint_File from "./Hint_File";
 
 function Hint_Container({ foodList }) {
-  const hints = foodList["hints"] ? foodList["hints"] : [];
   console.log(foodList);
-  console.log(hints);
+  const hints = foodList["hints"] ? foodList["hints"] : [];
   return (
     <>
       <table>
@@ -16,6 +15,9 @@ function Hint_Container({ foodList }) {
             <th>Quantity</th>
             <th>Calroies</th>
             <th>Protien</th>
+            <th>Carbs</th>
+            <th>Fat</th>
+            <th>Add</th>
           </tr>
         </thead>
 
