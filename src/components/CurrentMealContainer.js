@@ -1,4 +1,12 @@
-function CurrentMealContainer() {
+import { useEffect } from "react";
+
+import CurrentMealFile from "./CurrentMealFile";
+
+function CurrentMealContainer({ currentMeal }) {
+  useEffect(() => {
+    console.log(currentMeal);
+  });
+
   return (
     <>
       <div>
@@ -18,6 +26,11 @@ function CurrentMealContainer() {
               <th>Remove</th>
             </tr>
           </thead>
+          <tbody>
+            {currentMeal.map((food, i) => (
+              <CurrentMealFile key={i} food={food} />
+            ))}
+          </tbody>
         </table>
       </div>
     </>

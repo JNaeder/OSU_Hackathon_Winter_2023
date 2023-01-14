@@ -23,12 +23,17 @@ const app = initializeApp(firebaseConfig);
 
 function App() {
   const [foodList, setFoodList] = useState({});
+  const [currentMeal, setCurrentMeal] = useState([]);
 
   return (
     <div className="App">
       <FoodSearch setFoodList={setFoodList} foodList={foodList} />
-      <CurrentMealContainer />
-      <Hint_Container foodList={foodList} />
+      <CurrentMealContainer currentMeal={currentMeal} />
+      <Hint_Container
+        foodList={foodList}
+        currentMeal={currentMeal}
+        setCurrentMeal={setCurrentMeal}
+      />
     </div>
   );
 }
