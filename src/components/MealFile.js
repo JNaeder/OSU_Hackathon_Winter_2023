@@ -28,18 +28,23 @@ function MealFile({
         const mealRef = doc(theMeals, mealName);
         const mealDoc = await getDoc(mealRef);
         const mealData = mealDoc.data();
-
-        setTheMeal(mealData);
         if (mealData) {
+          setTheMeal(mealData);
           setTheFoods(mealData["foods"]);
         } else {
+          setTheMeal({
+            calories: 0,
+            protien: 0,
+            carbs: 0,
+            fat: 0,
+          });
           setTheFoods([]);
         }
       }
     };
 
     getData();
-  });
+  }, [theMeals]);
 
   return (
     <>
@@ -63,6 +68,17 @@ function MealFile({
           {theFoods.map((food, i) => (
             <MealFileData key={i} food={food} />
           ))}
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>TOTAL</td>
+            <td>{Math.round(theMeal["calories"] * 100) / 100} cal</td>
+            <td>{Math.round(theMeal["protien"] * 100) / 100} g</td>
+            <td>{Math.round(theMeal["carbs"] * 100) / 100} g</td>
+            <td>{Math.round(theMeal["fat"] * 100) / 100} g</td>
+          </tr>
         </tbody>
       </table>
     </>

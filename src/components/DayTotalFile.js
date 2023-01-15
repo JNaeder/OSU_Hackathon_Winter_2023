@@ -11,22 +11,25 @@ function DayTotalFile({ theMeals }) {
     const getData = async function () {
       if (theMeals) {
         const meals = await getDocs(theMeals);
-        // setTotalCalories(0);
-        // setTotalProtien(0);
-        // setTotalCarbs(0);
-        // setTotalFat(0);
-        // totalCalories = 0;
+        const mealArray = [];
+
         meals.forEach((meal) => {
-          const mealData = meal.data();
-          const newCalories = totalCalories + mealData["calories"];
-          const newProtien = totalProtien + mealData["protien"];
-          const newCarbs = totalCarbs + mealData["carbs"];
-          const newFat = totalFat + mealData["fat"];
-          setTotalCalories(Math.round(newCalories));
-          setTotalProtien(Math.round(newProtien));
-          setTotalCarbs(Math.round(newCarbs));
-          setTotalFat(Math.round(newFat));
+          const newMeal = meal.data();
+          mealArray.push(newMeal);
         });
+
+        setTotalCalories(
+          mealArray.reduce((acc, curr) => acc + Math.round(curr["calories"]), 0)
+        );
+        setTotalProtien(
+          mealArray.reduce((acc, curr) => acc + Math.round(curr["protien"]), 0)
+        );
+        setTotalCarbs(
+          mealArray.reduce((acc, curr) => acc + Math.round(curr["carbs"]), 0)
+        );
+        setTotalFat(
+          mealArray.reduce((acc, curr) => acc + Math.round(curr["fat"]), 0)
+        );
       }
     };
 
@@ -35,7 +38,7 @@ function DayTotalFile({ theMeals }) {
 
   return (
     <>
-      <h1>Total</h1>
+      <h1>Daily Total</h1>
       <table>
         <thead>
           <tr>
