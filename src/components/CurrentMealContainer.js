@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { collection, doc, setDoc, getDoc } from "firebase/firestore";
+import moment from "moment";
 
 import CurrentMealFile from "./CurrentMealFile";
 
-function CurrentMealContainer({ currentMeal, setCurrentMeal, db }) {
-  const mealDB = collection(db, "meals");
-
+function CurrentMealContainer({
+  currentMeal,
+  setCurrentMeal,
+  db,
+  currentMealToEdit,
+  dayToEdit,
+  auth,
+  setSelectedDay,
+}) {
   const [totalCal, setTotalCal] = useState(0);
   const [totalProtien, setTotalProtien] = useState(0);
   const [totalCarbs, setTotalCarbs] = useState(0);
   const [totalFat, setTotalFat] = useState(0);
+
+  const navigation = useNavigate();
 
   useEffect(() => {
     setTotalCal(currentMeal.reduce((acc, cur) => acc + cur["calories"], 0));
@@ -20,22 +30,42 @@ function CurrentMealContainer({ currentMeal, setCurrentMeal, db }) {
 
   const addMeal = async function () {
     const newObject = {
-      meal: "Dinner",
+      meal: currentMealToEdit,
       foods: currentMeal,
       calories: totalCal,
       protien: totalProtien,
       carbs: totalCarbs,
       fat: totalFat,
     };
-    // console.log(newObject);
-    const docRef = await addDoc(mealDB, newObject);
-    console.log(docRef);
+
+    const theDateTime = moment(dayToEdit)
+      .hour(0)
+      .minute(0)
+      .second(0)
+      .millisecond(0)
+      .toString();
+
+    const usersColl = collection(db, "users");
+    const userDocRef = doc(usersColl, auth.currentUser["uid"]);
+    const userDoc = await getDoc(userDocRef);
+    if (!userDoc.exists()) {
+      await setDoc(userDocRef, { email: auth.currentUser["email"] });
+    }
+    const timeColl = collection(userDocRef, theDateTime);
+    const mealDocRef = doc(timeColl, currentMealToEdit);
+    await setDoc(mealDocRef, newObject);
+
+    console.log("done");
+    setSelectedDay(dayToEdit);
+    navigation("/");
   };
 
   return (
     <>
       <div>
-        <h1>Current Meal</h1>
+        <h1>
+          {currentMealToEdit} - {moment(dayToEdit).format("MMM Do YYYY")}
+        </h1>
         <table>
           <thead>
             <tr>

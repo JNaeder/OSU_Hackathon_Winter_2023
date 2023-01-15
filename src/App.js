@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import Hint_Container from "./components/Hint_Container";
-import FoodSearch from "./components/FoodSearch";
-import CurrentMealContainer from "./components/CurrentMealContainer";
+import RoutingStuff from "./components/RoutingStuff";
+import LoginPage from "./pages/LoginPage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDur93CUKM_7-w6NnkdNaUQu5eftN91354",
@@ -18,25 +19,22 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 function App() {
-  const [foodList, setFoodList] = useState({});
-  const [currentMeal, setCurrentMeal] = useState([]);
+  const [currentUser, setCurrentUser] = useState(auth.currentUser);
 
+  onAuthStateChanged(auth, () => {
+    setCurrentUser(auth.currentUser);
+  });
   return (
-    <div className="App">
-      <FoodSearch setFoodList={setFoodList} foodList={foodList} />
-      <CurrentMealContainer
-        currentMeal={currentMeal}
-        setCurrentMeal={setCurrentMeal}
-        db={db}
-      />
-      <Hint_Container
-        foodList={foodList}
-        currentMeal={currentMeal}
-        setCurrentMeal={setCurrentMeal}
-      />
-    </div>
+    <BrowserRouter>
+      {currentUser ? (
+        <RoutingStuff db={db} auth={auth} app={app} />
+      ) : (
+        <LoginPage auth={auth} />
+      )}
+    </BrowserRouter>
   );
 }
 
