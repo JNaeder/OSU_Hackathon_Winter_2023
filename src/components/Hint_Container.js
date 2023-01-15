@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import Hint_File from "./Hint_File";
 
-function Hint_Container({ foodList }) {
-  console.log(foodList);
+function Hint_Container({ foodList, currentMeal, setCurrentMeal }) {
   const hints = foodList["hints"] ? foodList["hints"] : [];
+
+  // useEffect(() => {
+  //   console.log(currentMeal);
+  // }, [currentMeal]);
+
   return (
     <>
       <table>
@@ -23,7 +28,12 @@ function Hint_Container({ foodList }) {
 
         <tbody>
           {hints.map((food, i) => (
-            <Hint_File food={food} key={i} />
+            <Hint_File
+              food={food}
+              key={i}
+              currentMeal={currentMeal}
+              setCurrentMeal={setCurrentMeal}
+            />
           ))}
         </tbody>
       </table>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Hint_File({ food }) {
+function Hint_File({ food, currentMeal, setCurrentMeal }) {
   // Food attributes
   const theBrand = food["food"]["brand"];
   const theLabel = food["food"]["label"];
@@ -42,6 +42,24 @@ function Hint_File({ food }) {
     setCurrentQuantity(1);
   };
 
+  const addToMeal = function () {
+    const newFood = {
+      foodId: food["food"]["foodId"],
+      brand: theBrand ? theBrand : "",
+      label: theLabel,
+      category: theCategory,
+      unit: currentUnit,
+      quantity: currentQuantity,
+      calories: currentCalories,
+      protien: currentProtien,
+      carbs: currentCarbs,
+      fat: currentFat,
+    };
+    const updatedMeal = Array(...currentMeal);
+    updatedMeal.push(newFood);
+    setCurrentMeal(updatedMeal);
+  };
+
   return (
     <>
       <tr>
@@ -70,7 +88,7 @@ function Hint_File({ food }) {
         <td>{Math.round(currentCarbs * 100) / 100} g</td>
         <td>{Math.round(currentFat * 100) / 100} g</td>
         <td>
-          <button>Add</button>
+          <button onClick={addToMeal}>Add</button>
         </td>
       </tr>
     </>
