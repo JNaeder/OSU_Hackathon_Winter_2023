@@ -2,8 +2,8 @@
   --orange: #d73f09;
   --lightOrange: #d35e34;
   --black: #181818;
-  --gray: #747474;
-  --darkerGray: #585858;
+  --gray: #ffffff;
+  --darkerGray: #c2c2c2;
 }
 
 /* .mealbuilder_container {
@@ -12,6 +12,7 @@
 
 .mealbuilder_container h1 {
   margin: 0;
+  color: white;
 }
 
 .mealbuilder_container table {
@@ -41,8 +42,19 @@ td {
   padding: 5px 10px;
 }
 
+.mealbuilder_container th {
+  background-color: var(--orange);
+}
+
 .currentMeal_container {
-  padding: 10px;
+  padding: 20px;
+  background-color: var(--black);
+  color: var(--orange);
+  width: 80%;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
 }
 
 .currentMeal_container .top_bar {
@@ -64,6 +76,7 @@ td {
 
 .currentMeal_container button:hover {
   color: var(--orange);
+  border-color: var(--orange);
 }
 
 .top_bar button {
@@ -98,15 +111,20 @@ td {
   font-weight: bold;
   border-radius: 10px;
   padding: 5px 20px;
+  margin-left: 10px;
 }
 
 .foodSearch_container button:hover {
   background-color: var(--lightOrange);
 }
 
-/* .hint_container {
-  background-color: green;
-} */
+.hint_container {
+  background-color: var(--black);
+  width: 80%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 20px;
+}
 
 .hint_container button {
   background-color: black;
@@ -123,4 +141,5 @@ td {
 
 .hint_container button:hover {
   color: var(--orange);
+  border-color: var(--orange);
 }

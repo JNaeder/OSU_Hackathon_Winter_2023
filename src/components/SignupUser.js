@@ -14,11 +14,12 @@ function SignupUser({ auth }) {
     e.preventDefault();
     await createUserWithEmailAndPassword(auth, theEmail, thePassword)
       .then((userCredential) => {
+        updateProfile(userCredential.user, { displayName: theDisplayName });
         console.log(userCredential.user);
-        alert(`Made new User!`);
+        alert(`Sign Up Successful!`);
       })
       .then(() => {
-        updateProfile(auth.currentUser, { displayName: theDisplayName });
+        console.log(auth.currentuser);
       })
       .catch((error) => {
         alert(error.message);

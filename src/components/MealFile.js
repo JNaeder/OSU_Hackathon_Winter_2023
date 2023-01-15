@@ -49,9 +49,9 @@ function MealFile({
   }, [theMeals]);
 
   return (
-    <>
+    <div className="mealFile_container">
       <div className="meal_top_bar">
-        <h2>{mealName} -</h2>
+        <h1>{mealName}</h1>
         <button onClick={addFoodButton}>Edit Foods</button>
       </div>
       <table>
@@ -72,7 +72,7 @@ function MealFile({
           {theFoods.map((food, i) => (
             <MealFileData key={i} food={food} />
           ))}
-          <tr>
+          <tr id="total">
             <td></td>
             <td></td>
             <td></td>
@@ -85,7 +85,7 @@ function MealFile({
           </tr>
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 
