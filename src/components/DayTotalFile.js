@@ -37,7 +37,7 @@ function DayTotalFile({ theMeals }) {
   }, [theMeals]);
 
   return (
-    <>
+    <div className="daily_total">
       <h1>Daily Total</h1>
       <table>
         <thead>
@@ -57,7 +57,7 @@ function DayTotalFile({ theMeals }) {
           </tr>
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 

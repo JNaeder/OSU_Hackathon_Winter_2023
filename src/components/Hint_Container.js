@@ -9,7 +9,7 @@ function Hint_Container({ foodList, currentMeal, setCurrentMeal }) {
   // }, [currentMeal]);
 
   return (
-    <>
+    <div className="hint_container">
       <table>
         <thead>
           <tr>
@@ -37,7 +37,7 @@ function Hint_Container({ foodList, currentMeal, setCurrentMeal }) {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 

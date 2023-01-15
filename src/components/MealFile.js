@@ -48,8 +48,10 @@ function MealFile({
 
   return (
     <>
-      <h2>{mealName}</h2>
-      <button onClick={addFoodButton}>Add Food</button>
+      <div className="meal_top_bar">
+        <h2>{mealName} -</h2>
+        <button onClick={addFoodButton}>Add Food</button>
+      </div>
       <table>
         <thead>
           <tr>

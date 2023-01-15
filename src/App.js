@@ -5,6 +5,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import RoutingStuff from "./components/RoutingStuff";
 import LoginPage from "./pages/LoginPage";
+import "./App.css";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDur93CUKM_7-w6NnkdNaUQu5eftN91354",

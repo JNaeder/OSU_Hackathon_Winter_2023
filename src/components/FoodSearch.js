@@ -30,22 +30,21 @@ function FoodSearch({ foodList, setFoodList }) {
   };
 
   return (
-    <>
-      <h1>Enter Food</h1>
+    <div className="foodSearch_container">
       <form>
-        <label htmlFor="food_name">Enter Food</label>
+        <label htmlFor="food_name">Enter Food: </label>
         <input
           type="text"
           name="food_name"
           onChange={(e) => setInputFood(e.target.value)}
         ></input>
         <button type="submit" onClick={submitButton}>
-          Enter
+          Search
         </button>
       </form>
 
       <button onClick={nextButton}>Next Page</button>
-    </>
+    </div>
   );
 }
 

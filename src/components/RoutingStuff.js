@@ -3,7 +3,7 @@ import { useState } from "react";
 import HomePage from "../pages/HomePage";
 import MealBuilderPage from "../pages/MealBuilderPage";
 import LoginPage from "../pages/LoginPage";
-import Navigation from "./Navigation";
+import Navigation from "./Navigation Stuff/Navigation";
 import moment from "moment";
 
 function RoutingStuff({ db, auth, app }) {
@@ -43,6 +43,7 @@ function RoutingStuff({ db, auth, app }) {
         />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
+      {/* <footer>By John Naeder - 2023</footer> */}
     </>
   );
 }

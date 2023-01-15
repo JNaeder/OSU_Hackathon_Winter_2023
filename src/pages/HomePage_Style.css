@@ -1,0 +1,87 @@
+:root {
+  --orange: #d73f09;
+  --black: #181818;
+  --gray: #747474;
+  --darkerGray: #585858;
+}
+
+.home_container {
+  margin: 0;
+}
+
+.current_date {
+  margin: 0;
+}
+
+.main_button {
+  background-color: var(--black);
+  color: white;
+  border: solid white 1px;
+  border-radius: 10px;
+  padding: 5px 20px;
+  margin: 0px 10px;
+}
+
+.main_button:hover {
+  color: var(--orange);
+}
+
+.daily_total {
+  margin-top: 10px;
+}
+
+.daily_total h1 {
+  margin: 0;
+}
+
+.home_container table {
+  background-color: var(--gray);
+  margin: auto;
+  width: 75%;
+  border-collapse: collapse;
+}
+
+.home_container th {
+  background-color: white;
+  color: black;
+}
+
+.home_container tr:nth-child(even) {
+  background-color: var(--darkerGray);
+}
+
+.home_container tr:last-child {
+  background-color: black;
+  color: white;
+}
+
+.home_container table,
+th,
+td {
+  border: solid black 1px;
+  padding: 5px 10px;
+}
+
+.meal_top_bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.meal_top_bar button {
+  background-color: black;
+  color: white;
+  border: solid white 1px;
+  border-radius: 10px;
+  padding: 3px 20px;
+  margin-left: 10px;
+}
+
+.meal_top_bar button:hover {
+  color: var(--orange);
+}
+
+.meal_top_bar h2 {
+  margin: 0;
+}

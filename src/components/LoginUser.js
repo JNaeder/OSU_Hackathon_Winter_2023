@@ -14,12 +14,13 @@ function LoginUser({ auth }) {
       .then(() => navigation("/"))
       .catch((error) => {
         console.log(error);
+        alert(error.message);
       });
   };
 
   return (
-    <>
-      <h3>Log In</h3>
+    <div className="input_container">
+      <h2>Log In</h2>
       <form>
         <label htmlFor="email">Email</label>
         <input
@@ -37,7 +38,7 @@ function LoginUser({ auth }) {
           Log In
         </button>
       </form>
-    </>
+    </div>
   );
 }
 

@@ -1,0 +1,126 @@
+:root {
+  --orange: #d73f09;
+  --lightOrange: #d35e34;
+  --black: #181818;
+  --gray: #747474;
+  --darkerGray: #585858;
+}
+
+/* .mealbuilder_container {
+  background-color: aqua;
+} */
+
+.mealbuilder_container h1 {
+  margin: 0;
+}
+
+.mealbuilder_container table {
+  margin: auto;
+  border-collapse: collapse;
+  background-color: var(--gray);
+}
+
+.mealbuilder_container th {
+  background-color: white;
+  color: black;
+}
+
+.mealbuilder_container tr:nth-child(even) {
+  background-color: var(--darkerGray);
+}
+
+#total {
+  background-color: black;
+  color: white;
+}
+
+.mealbuilder_container table,
+th,
+td {
+  border: solid black 1px;
+  padding: 5px 10px;
+}
+
+.currentMeal_container {
+  padding: 10px;
+}
+
+.currentMeal_container .top_bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.currentMeal_container button {
+  background-color: black;
+  color: white;
+  border: solid white 1px;
+  border-radius: 10px;
+  padding: 5px 20px;
+}
+
+.currentMeal_container button:hover {
+  color: var(--orange);
+}
+
+.top_bar button {
+  background-color: black;
+  border: solid white 1px;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.top_bar button:hover {
+  color: var(--orange);
+}
+
+.foodSearch_container {
+  padding: 10px;
+  width: 75%;
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: var(--black);
+}
+
+.foodSearch_container label {
+  font-weight: bolder;
+  color: white;
+}
+
+.foodSearch_container button {
+  background-color: var(--orange);
+  border: none;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 5px 20px;
+}
+
+.foodSearch_container button:hover {
+  background-color: var(--lightOrange);
+}
+
+/* .hint_container {
+  background-color: green;
+} */
+
+.hint_container button {
+  background-color: black;
+  color: white;
+  border: solid white 1px;
+  border-radius: 10px;
+  padding: 5px 20px;
+}
+
+.hint_container input {
+  /* padding: 4px 20px; */
+  width: 50px;
+}
+
+.hint_container button:hover {
+  color: var(--orange);
+}

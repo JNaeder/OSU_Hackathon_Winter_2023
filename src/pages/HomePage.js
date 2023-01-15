@@ -1,7 +1,8 @@
 import moment from "moment/moment";
 import DayFile from "../components/DayFile";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { collection, doc } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import "./HomePage_Style.css";
 
 function HomePage({
   setCurrentMealToEdit,
@@ -35,17 +36,23 @@ function HomePage({
   };
 
   return (
-    <>
-      <h1>{moment(selectedDay).format("MMM Do YYYY")}</h1>
-      <button onClick={() => changeDay(-1)}>Prev Day</button>
-      <button onClick={() => changeDay(1)}>Next Day</button>
+    <div className="home_container">
+      <h1 className="current_date">
+        {moment(selectedDay).format("MMM Do YYYY")}
+      </h1>
+      <button onClick={() => changeDay(-1)} className="main_button">
+        Prev Day
+      </button>
+      <button onClick={() => changeDay(1)} className="main_button">
+        Next Day
+      </button>
       <DayFile
         setCurrentMealToEdit={setCurrentMealToEdit}
         setDayToEdit={setDayToEdit}
         theMeals={theMeals}
         selectedDay={selectedDay}
       />
-    </>
+    </div>
   );
 }
 

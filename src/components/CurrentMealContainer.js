@@ -61,51 +61,52 @@ function CurrentMealContainer({
   };
 
   return (
-    <>
-      <div>
+    <div className="currentMeal_container">
+      <div className="top_bar">
         <h1>
           {currentMealToEdit} - {moment(dayToEdit).format("MMM Do YYYY")}
         </h1>
-        <table>
-          <thead>
-            <tr>
-              <th>Brand</th>
-              <th>Label</th>
-              <th>Type</th>
-              <th>Unit</th>
-              <th>Quantity</th>
-              <th>Calroies</th>
-              <th>Protien</th>
-              <th>Carbs</th>
-              <th>Fat</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentMeal.map((food, i) => (
-              <CurrentMealFile
-                key={i}
-                food={food}
-                currentMeal={currentMeal}
-                setCurrentMeal={setCurrentMeal}
-              />
-            ))}
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>TOTAL</td>
-              <td>{Math.round(totalCal * 100) / 100} cal</td>
-              <td>{Math.round(totalProtien * 100) / 100} g</td>
-              <td>{Math.round(totalCarbs * 100) / 100} g</td>
-              <td>{Math.round(totalFat * 100) / 100} g</td>
-            </tr>
-          </tbody>
-        </table>
         <button onClick={addMeal}>Add Meal</button>
       </div>
-    </>
+      <table>
+        <thead>
+          <tr>
+            <th>Brand</th>
+            <th>Label</th>
+            <th>Type</th>
+            <th>Unit</th>
+            <th>Quantity</th>
+            <th>Calroies</th>
+            <th>Protien</th>
+            <th>Carbs</th>
+            <th>Fat</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentMeal.map((food, i) => (
+            <CurrentMealFile
+              key={i}
+              food={food}
+              currentMeal={currentMeal}
+              setCurrentMeal={setCurrentMeal}
+            />
+          ))}
+          <tr id="total">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>TOTAL</td>
+            <td>{Math.round(totalCal * 100) / 100} cal</td>
+            <td>{Math.round(totalProtien * 100) / 100} g</td>
+            <td>{Math.round(totalCarbs * 100) / 100} g</td>
+            <td>{Math.round(totalFat * 100) / 100} g</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   );
 }
 export default CurrentMealContainer;
