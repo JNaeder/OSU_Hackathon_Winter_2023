@@ -43,16 +43,19 @@ function Hint_File({ food, currentMeal, setCurrentMeal }) {
   };
 
   const addToMeal = function () {
-    console.log(currentMeal);
     const newFood = {
-      brand: theBrand,
+      foodId: food["food"]["foodId"],
+      brand: theBrand ? theBrand : "",
       label: theLabel,
       category: theCategory,
       unit: currentUnit,
       quantity: currentQuantity,
-      nutrients: theNutrients,
+      calories: currentCalories,
+      protien: currentProtien,
+      carbs: currentCarbs,
+      fat: currentFat,
     };
-    const updatedMeal = currentMeal;
+    const updatedMeal = Array(...currentMeal);
     updatedMeal.push(newFood);
     setCurrentMeal(updatedMeal);
   };

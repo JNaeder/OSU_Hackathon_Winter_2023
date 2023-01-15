@@ -1,12 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import Hint_Container from "./components/Hint_Container";
 import FoodSearch from "./components/FoodSearch";
 import CurrentMealContainer from "./components/CurrentMealContainer";
-
-// const firebaseAPI = env.FIREBASE_API_KEY;
-const foodAPI = process.env.REACT_APP_FOOD_API_KEY;
 
 const firebaseConfig = {
   apiKey: "AIzaSyDur93CUKM_7-w6NnkdNaUQu5eftN91354",
@@ -20,6 +17,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 function App() {
   const [foodList, setFoodList] = useState({});
@@ -28,7 +26,11 @@ function App() {
   return (
     <div className="App">
       <FoodSearch setFoodList={setFoodList} foodList={foodList} />
-      <CurrentMealContainer currentMeal={currentMeal} />
+      <CurrentMealContainer
+        currentMeal={currentMeal}
+        setCurrentMeal={setCurrentMeal}
+        db={db}
+      />
       <Hint_Container
         foodList={foodList}
         currentMeal={currentMeal}

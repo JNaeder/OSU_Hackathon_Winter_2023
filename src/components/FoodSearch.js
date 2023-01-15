@@ -12,6 +12,7 @@ const getFood = async function (foodName) {
 };
 
 function FoodSearch({ foodList, setFoodList }) {
+  // console.log(foodList);
   const [inputFood, setInputFood] = useState("");
 
   const submitButton = async function (e) {
@@ -27,6 +28,7 @@ function FoodSearch({ foodList, setFoodList }) {
       .then((data) => data);
     setFoodList(output);
   };
+
   return (
     <>
       <h1>Enter Food</h1>
@@ -42,7 +44,7 @@ function FoodSearch({ foodList, setFoodList }) {
         </button>
       </form>
 
-      <button onClick={nextButton}>Next</button>
+      <button onClick={nextButton}>Next Page</button>
     </>
   );
 }

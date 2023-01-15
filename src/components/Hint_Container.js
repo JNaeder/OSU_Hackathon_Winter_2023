@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import Hint_File from "./Hint_File";
 
 function Hint_Container({ foodList, currentMeal, setCurrentMeal }) {
-  console.log(foodList);
   const hints = foodList["hints"] ? foodList["hints"] : [];
+
+  // useEffect(() => {
+  //   console.log(currentMeal);
+  // }, [currentMeal]);
+
   return (
     <>
       <table>
