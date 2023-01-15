@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  createUserWithEmailAndPassword,
-  signOut,
-  updateProfile,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 function SignupUser({ auth }) {
   const [theEmail, setTheEmail] = useState("");
