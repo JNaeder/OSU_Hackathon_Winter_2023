@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAnalytics, logEvent } from "firebase/analytics";
 import RoutingStuff from "./components/RoutingStuff";
 import LoginPage from "./pages/LoginPage";
 import "./App.css";
@@ -21,6 +22,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+const analytics = getAnalytics(app);
+
+logEvent(analytics, "App started!");
 
 function App() {
   const [currentUser, setCurrentUser] = useState(auth.currentUser);

@@ -7,6 +7,7 @@ import "./HomePage_Style.css";
 function HomePage({
   setCurrentMealToEdit,
   setDayToEdit,
+  setCurrentMeal,
   auth,
   db,
   selectedDay,
@@ -48,6 +49,7 @@ function HomePage({
       </button>
       <DayFile
         setCurrentMealToEdit={setCurrentMealToEdit}
+        setCurrentMeal={setCurrentMeal}
         setDayToEdit={setDayToEdit}
         theMeals={theMeals}
         selectedDay={selectedDay}

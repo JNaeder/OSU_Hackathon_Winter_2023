@@ -10,6 +10,7 @@ function RoutingStuff({ db, auth, app }) {
   const [currentMealToEdit, setCurrentMealToEdit] = useState("");
   const [dayToEdit, setDayToEdit] = useState("");
   const [selectedDay, setSelectedDay] = useState(moment().toISOString());
+  const [currentMeal, setCurrentMeal] = useState([]);
 
   return (
     <>
@@ -20,6 +21,7 @@ function RoutingStuff({ db, auth, app }) {
           element={
             <HomePage
               setCurrentMealToEdit={setCurrentMealToEdit}
+              setCurrentMeal={setCurrentMeal}
               setDayToEdit={setDayToEdit}
               selectedDay={selectedDay}
               setSelectedDay={setSelectedDay}
@@ -38,6 +40,8 @@ function RoutingStuff({ db, auth, app }) {
               currentMealToEdit={currentMealToEdit}
               dayToEdit={dayToEdit}
               setSelectedDay={setSelectedDay}
+              currentMeal={currentMeal}
+              setCurrentMeal={setCurrentMeal}
             />
           }
         />

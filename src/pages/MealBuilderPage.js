@@ -10,9 +10,10 @@ function MealBuilderPage({
   currentMealToEdit,
   dayToEdit,
   setSelectedDay,
+  currentMeal,
+  setCurrentMeal,
 }) {
   const [foodList, setFoodList] = useState({});
-  const [currentMeal, setCurrentMeal] = useState([]);
 
   return (
     <div className="mealbuilder_container">

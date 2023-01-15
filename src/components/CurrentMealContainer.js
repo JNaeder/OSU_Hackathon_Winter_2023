@@ -66,7 +66,7 @@ function CurrentMealContainer({
         <h1>
           {currentMealToEdit} - {moment(dayToEdit).format("MMM Do YYYY")}
         </h1>
-        <button onClick={addMeal}>Add Meal</button>
+        <button onClick={addMeal}>Confirm Meal</button>
       </div>
       <table>
         <thead>

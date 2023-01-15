@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { doc, getDoc, query, where } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import MealFileData from "./MealFileData";
 
 function MealFile({
   mealName,
   setCurrentMealToEdit,
+  setCurrentMeal,
   setDayToEdit,
   selectedDay,
   theMeals,
@@ -16,9 +17,10 @@ function MealFile({
   const [theFoods, setTheFoods] = useState([]);
 
   const addFoodButton = function () {
-    console.log(`Add ${mealName} food.`);
     setCurrentMealToEdit(mealName);
+    setCurrentMeal(theFoods);
     setDayToEdit(selectedDay);
+
     navigate("/mealbuilder");
   };
 
@@ -50,7 +52,7 @@ function MealFile({
     <>
       <div className="meal_top_bar">
         <h2>{mealName} -</h2>
-        <button onClick={addFoodButton}>Add Food</button>
+        <button onClick={addFoodButton}>Edit Foods</button>
       </div>
       <table>
         <thead>

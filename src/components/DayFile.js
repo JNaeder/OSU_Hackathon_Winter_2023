@@ -3,6 +3,7 @@ import DayTotalFile from "./DayTotalFile";
 
 function DayFile({
   setCurrentMealToEdit,
+  setCurrentMeal,
   theMeals,
   setDayToEdit,
   selectedDay,
@@ -13,6 +14,7 @@ function DayFile({
       <MealFile
         mealName="Breakfast"
         setCurrentMealToEdit={setCurrentMealToEdit}
+        setCurrentMeal={setCurrentMeal}
         setDayToEdit={setDayToEdit}
         selectedDay={selectedDay}
         theMeals={theMeals}
@@ -20,6 +22,7 @@ function DayFile({
       <MealFile
         mealName="Lunch"
         setCurrentMealToEdit={setCurrentMealToEdit}
+        setCurrentMeal={setCurrentMeal}
         setDayToEdit={setDayToEdit}
         selectedDay={selectedDay}
         theMeals={theMeals}
@@ -27,6 +30,7 @@ function DayFile({
       <MealFile
         mealName="Dinner"
         setCurrentMealToEdit={setCurrentMealToEdit}
+        setCurrentMeal={setCurrentMeal}
         setDayToEdit={setDayToEdit}
         selectedDay={selectedDay}
         theMeals={theMeals}

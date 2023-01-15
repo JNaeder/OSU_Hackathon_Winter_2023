@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Hint_File({ food, currentMeal, setCurrentMeal }) {
+function Hint_File({ food, currentMeal, setCurrentMeal, foodList }) {
   // Food attributes
   const theBrand = food["food"]["brand"];
   const theLabel = food["food"]["label"];
@@ -34,7 +34,11 @@ function Hint_File({ food, currentMeal, setCurrentMeal }) {
     setCurrentFat(
       currentUnit["weight"] * (theNutrients["FAT"] / 100) * currentQuantity
     );
-  }, [currentUnit, currentQuantity]);
+  }, [currentUnit, currentQuantity, foodList]);
+
+  useEffect(() => {
+    setCurrentQuantity(1);
+  }, [foodList]);
 
   const chooseUnit = function (e) {
     const newUnit = JSON.parse(e.target.value);
